@@ -28,6 +28,8 @@ namespace SmarterCalculator
                 }
                 else
                 {
+                    // saglabāt simolu teksta virknē, lai tam
+                    // var piekļūt, kad tiek veikta darbība
                     int number;
                     number = Int32.Parse(symbol.ToString());
                     Console.WriteLine("number " + number);
