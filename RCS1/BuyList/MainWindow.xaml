@@ -7,11 +7,23 @@
         mc:Ignorable="d"
         Title="Todo aplikācija" Height="350" Width="525">
     <Grid Background="MidnightBlue" RenderTransformOrigin="0.504,0.156">
-        <TextBox x:Name="BuyListItemName" HorizontalAlignment="Left" Height="49" Margin="27,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="197"/>
+        <TextBox x:Name="BuyListItemName" HorizontalAlignment="Left" Height="49" Margin="27,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
         <Button x:Name="AddListItemButton" Click="AddListItemButton_Click" Content="Pievienot pirkumu" HorizontalAlignment="Left" Margin="319,28,0,0" VerticalAlignment="Top" Width="120" Height="49"/>
         <TextBlock x:Name="BuyItemName" HorizontalAlignment="Left" Margin="27,90,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="197" Height="45"/>
         <ScrollViewer Margin="27,166,293,104">
-            <ItemsControl x:Name="BuyItemsListControl"/>
+            <ItemsControl x:Name="BuyItemsListControl" Height="50">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding }" />
+                            <Button Margin="20,0,20,5" Content="Dzēst"></Button>
+                    </WrapPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
         </ScrollViewer>
+        <Button Content="Saglabat lietas" HorizontalAlignment="Left" Margin="319,166,0,0" VerticalAlignment="Top" Width="120" Click="Button_Click" Height="50"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,7,0,0" TextWrapping="Wrap" Text="Lūdzu ievadiet pirkumu" VerticalAlignment="Top" RenderTransformOrigin="-1.52,-4.542" Width="197"/>
+        <Button Content="Ielādē lietas" HorizontalAlignment="Left" Margin="319,101,0,0" VerticalAlignment="Top" Width="120" Height="52" Click="Button_Click_1"/>
     </Grid>
 </Window>

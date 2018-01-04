@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace BuyList
 {
     using System.Collections.ObjectModel;
+    using System.IO;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -26,7 +27,6 @@ namespace BuyList
         {
             InitializeComponent();
 
-            BuyListItemName.Text = "Lūdzu ievadiet pirkumu";
             BuyItemsList.Add("āboli");
             BuyItemsList.Add("bumbieri");
 
@@ -47,6 +47,18 @@ namespace BuyList
 
             // ierakstam iegūto vērtību teksta blokā
             BuyItemsList.Add(enteredItemToBuy);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // @ nozīmē teksts, ignorē slīpsvītru
+            File.WriteAllLines(@"C:\Users\user\Desktop\buylist_01\mans_fails.txt", BuyItemsList);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            string todosFromFile = File.ReadAllText(@"C:\Users\user\Desktop\buylist_01\mans_fails.txt");
+            BuyItemsList.Add(todosFromFile);
         }
     }
 }
