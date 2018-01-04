@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,6 @@ using System.Windows.Shapes;
 namespace BuyList
 {
     using System.Collections.ObjectModel;
-    using System.IO;
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -26,30 +26,27 @@ namespace BuyList
         {
             InitializeComponent();
 
-            BuyListItemName.Text = "lūdzu ievadiet pirkumu";
+            BuyListItemName.Text = "Lūdzu ievadiet pirkumu";
             BuyItemsList.Add("āboli");
             BuyItemsList.Add("bumbieri");
 
-            // pasakam BuyItemsListControl, ka jāizmanto mūsu saraksts,
-            // kā rādāmo lietu avots (jāskatās no saraksta, ko rādīt)
+            // šī kontrole ņems lietas un parādīs uz ekrāna
+            // pasakam BuyItemsListControl, ka jāizmanto mūsu saraksts
+            // kā rādāmo lietu avots (jāskatās no saraksta ko rādīt)
             BuyItemsListControl.ItemsSource = BuyItemsList;
+
         }
 
-        private void AddListItemButton_OnClick(object sender, RoutedEventArgs e)
+        private void AddListItemButton_Click(object sender, RoutedEventArgs e)
         {
             // izvelkam vērtību no teksta lauka
-            string input = BuyListItemName.Text;
+            string enteredItemToBuy = BuyListItemName.Text;
 
-            // nodzēšam vērtību teksta laukā
+            // pēc tam nodzēšam vērtību kas parādās 
             BuyListItemName.Text = "";
 
-            // ierakstām ieguto vērtību teksta blokā
-            BuyItemsList.Add(input);
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            File.WriteAllLines(@"C:\_fails.txt", BuyItemsList);
+            // ierakstam iegūto vērtību teksta blokā
+            BuyItemsList.Add(enteredItemToBuy);
         }
     }
 }
