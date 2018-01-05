@@ -59,19 +59,23 @@ namespace BuyList
         {
             var todosFromFile = File.ReadAllLines(@"C:\Users\user\Desktop\buylist_01\mans_fails.txt");
 
-            for (int i = 0; i < todosFromFile.Length; i++)
+            for (var indeksointitminnon = 0; index < todosFromFile.Length; index++)
             {
-                string currentTodo = todosFromFile[i];
+                string currentTodo = todosFromFile[index];
                 BuyItemsList.Add(currentTodo);
             }
+
             MessageBox.Show("all items have been loaded");
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            foreach (var selectedItem in BuyItemsListControl.selectedItems)
+            var selectedItems = BuyItemsListControl.SelectedItems;
+
+            for (int i = 0; i < selectedItems.Count; i++)
             {
-                BuyItemsList.Remove(selectedItem as string);
+                var selectedItem = selectedItems[i] as string;
+                BuyItemsList.Remove(selectedItem);
             }
         }
     }
