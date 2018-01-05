@@ -57,8 +57,22 @@ namespace BuyList
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string todosFromFile = File.ReadAllText(@"C:\Users\user\Desktop\buylist_01\mans_fails.txt");
-            BuyItemsList.Add(todosFromFile);
+            var todosFromFile = File.ReadAllLines(@"C:\Users\user\Desktop\buylist_01\mans_fails.txt");
+
+            for (int i = 0; i < todosFromFile.Length; i++)
+            {
+                string currentTodo = todosFromFile[i];
+                BuyItemsList.Add(currentTodo);
+            }
+            MessageBox.Show("all items have been loaded");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            foreach (var selectedItem in BuyItemsListControl.selectedItems)
+            {
+                BuyItemsList.Remove(selectedItem as string);
+            }
         }
     }
 }
